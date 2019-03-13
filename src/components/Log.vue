@@ -27,7 +27,7 @@ export default {
   methods: {
     Log () {
       if (this.password === '123456') {
-          this, $router.push({path:'/'})
+          this.$router.push({path:'/'})
         }else{
             AlertModule.show({
                 title:'登陆失败',
