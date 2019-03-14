@@ -6,7 +6,7 @@
 <x-input title="密码" mask="999 9999 9999" v-model="password" :max="13"></x-input>
 </group>
 <div>
-<x-botton @click.native='Log'>登陆></x-botton>
+<x-botton @click.native='Log'>登陆</x-botton>
 </div>
 </div>
 </template>
@@ -14,7 +14,7 @@
 
 <script>
 
-import { XInput, Group, XButton, Cell, Alert } from 'vux'
+import { XInput, Group, XButton, Cell, Alert, AlertModule } from 'vux'
 
 export default {
   components: {
@@ -22,25 +22,26 @@ export default {
     XButton,
     Group,
     Cell,
-    Alert
+    Alert,
+    AlertModule
   },
   methods: {
     Log () {
       if (this.password === '123456') {
-          this.$router.push({path:'/'})
-        }else{
-            AlertModule.show({
-                title:'登陆失败',
-                content:'密码错误'
-            })
-        }
+        this.$router.push({ path: '/' })
+      } else {
+        AlertModule.show({
+          title: '登陆失败',
+          content: '密码错误'
+        })
+      }
     }
-},
-data () {
+  },
+  data () {
     return {
-    phone: '',
-    password: ''
-   }
-}
+      phone: '',
+      password: ''
+    }
+  }
 }
 </script>
