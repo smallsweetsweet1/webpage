@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-header :right-options="{showMore: true}" :left-options="{showBack: false}">首页</x-header>
+    <x-header :right-options="{showMore: true}" @click.native="Log" :left-options="{showBack: false}">首页</x-header>
     <swiper loop auto :list="demo06_list" :index="demo06_index"></swiper>
     <grid>
       <grid-item :cols="2" :label="('lemon')">
@@ -53,7 +53,7 @@ const baseList = [{
   title: '送你一辆车'
 }, {
   url: 'javascript:',
-  img: 'https://static.vux.li/demo/5.jpg', // 404
+  img: 'https://static.vux.li/demo/5.jpg',
   title: '送你一次旅行',
   fallbackImg: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg'
 }]
@@ -77,6 +77,11 @@ export default {
     Tabbar,
     TabbarItem,
     Cell
+  },
+  methods: {
+    Log () {
+      this.$router.push({ path: '/Log' })
+    }
   },
   data () {
     return {
