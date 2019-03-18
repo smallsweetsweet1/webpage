@@ -57,14 +57,12 @@ const baseList = [{
   title: '送你一次旅行',
   fallbackImg: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg'
 }]
-
 const urlList = baseList.map((item, index) => ({
   url: 'http://m.baidu.com',
   img: item.img,
   fallbackImg: item.fallbackImg,
   title: `(可点击)${item.title}`
 }))
-
 export default {
   components: {
     Panel,
@@ -82,6 +80,20 @@ export default {
     Log () {
       this.$router.push({ path: '/Log' })
     }
+  },
+    created () {
+    let _this = this
+    this.$http.post('https://api.apiopen.top/getJoke').then(({data}) => {
+      console.log(data)
+      var new_data = data.result.map((item, index) => ({
+        src: item.header,
+        fallbackSrc: item.header,
+        title: item.name,
+        desc: item.text
+      }))
+      console.log(new_data)
+      _this.list = new_data
+    })
   },
   data () {
     return {
